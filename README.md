@@ -5,4 +5,4 @@
 | :-------------: | :----------: | :-----------: |
 | 1	 | Reverse an array | [Link](/Challenge/Reverse.md) |
 
-https://github.com/joud-alnsour/data-structures-and-algorithms/pulls
+[pull](https://github.com/joud-alnsour/data-structures-and-algorithms/pulls)
