@@ -8,3 +8,8 @@
 | 3	 |	Array binary search  | [Link](/Challenge/Challenge03.md) |
 
 [pull](https://github.com/joud-alnsour/data-structures-and-algorithms/pulls)
+
+ 
+
+ 
+
