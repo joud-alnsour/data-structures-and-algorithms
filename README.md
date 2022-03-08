@@ -7,3 +7,12 @@
 | 2	 | Insert to Middle of an Array  | [Link](/Challenge/added.md) |
 | 3	 |	Array binary search  | [Link](/Challenge/Challenge03.md) |
 
+
+
+
+
+ 
+
+ 
+
+
