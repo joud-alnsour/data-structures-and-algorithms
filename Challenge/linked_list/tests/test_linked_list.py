@@ -43,7 +43,7 @@ def test_insert_befor():
     assert actual == expected  
 
 
-def test_append1():
+def test_append():
     ll = LinkedList()
     ll.insert_values(['list' , 'python' ])
     ll.append('fix')

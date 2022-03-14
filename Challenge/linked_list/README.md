@@ -17,14 +17,19 @@ Create a Linked List with all of the properties listed below:
 - adds the insert() method, which can be used to create a new node with the specified data ll-insertions.
 
 - to string 
+- append
+- insert_after
+- insert_befor
 
 
 
-### Tasks checklist:
+## Tasks checklist:
 - [x] insert method
 - [x] includes function
 - [x] Create a Node class
 - [x] Create a LinkedList class 
- 
+- [x] Create an append method
+- [x] insert_after method
+- [x] insert_befor method
 
 
