@@ -1,3 +1,6 @@
+
+
+
 class Node:
 
 
@@ -20,7 +23,7 @@ class LinkedList:
         if value == '':
             raise TypeError('empty value')
         else:
-            #value = Node(value)
+            value = Node(value)
             value.next = self.head
             self.head = value
          
@@ -53,67 +56,99 @@ class LinkedList:
     def to_string(self):
         return self.__str__()
 
-    def append(self,value):
-        if value == '':
-            raise TypeError('Node not empty')
+
+    # def append(self,value):
+    #     if value == '':
+    #         raise TypeError('Node not empty')
+    #     else:
+            
+    #         if self.head is None:
+    #             self.head = value
+            
+    #         else:
+    #             current = self.head
+    #             while current.next :
+    #                 current = current.next
+    #             current.next = value   
+
+
+    def insert_after(self, old , new):
+      
+        if new == None:
+            raise TypeError('value is empty')
+        if old == None:
+            raise TypeError('value is empty')
         else:
-            
-            if self.head is None:
-                self.head = value
-            
-            else:
-                current = self.head
-                while current.next is not None:
-                    current = current.next
-                current.next = value   
-
-
-    def insert_after(self, value , new):
-
-        if self.head == None:
-            return
-
-        current =  self.head
+            old = Node(old)
+            new = Node(new)
+            current =  self.head
         while current:
-            if current.value == value:
-                current.next=Node(new , current.next)
+            if current.value == old.value:
+                new.next = current.next
+                current.next = new
             current = current.next
         return
 
        
 
     def insert_befor(self, value , new):
-         
+        value = Node(value)
+        new = Node(new)
         if self.head == None:
             return
 
         if self.head.value == value:
-            self.insert_at_beginning()
             return
 
         current =  self.head
+        if current.value== value:
+            new.next= current
+            self.head=new
         while current:
-            if self.head == None:
-                break
+            if current.next.value == value.value: 
+                new.next= current.next
+                current.next = new    
+                return 
+            current = current.next    
+            
+                
 
-            if current.next.value == value: 
-                node = Node(new , current.next)
-                node.next= current.next
-                current.next = node    
-                return
-            else:
-                return (-1)
+
+    def get_kth_from_end(self,k):
+        extent = 0
+        current=self.head
+        if k<0:
+             raise Exception ('the index must be positive')
+        while current:
+            current = current.next 
+            extent = extent + 1 
+        if extent <= k:
+            raise Exception ('The index is out of bounds')
+        else: 
+            current=self.head
+        for i in range(extent - (k+1)):
+            current = current.next
+        print(current.value)
+        return current.value
+
+
 
 
 
 if __name__ == '__main__':
    ll=LinkedList()
    ll.head=Node('joud')
-   ll.x=Node('good')
-   ll.insert(Node(True)) 
-   ll.insert_after('add' , 'nice')
-   ll.insert_befor('python' , 'language')
-   print(ll.includes('joud'))
-   #ll = ll.__str__()
+   ll.insert('tala')
+   ll.insert('language')        
+   ll.insert('best')
+   ll.insert('is')
+ 
+#    ll.x=Node('good')
+#    ll.insert(Node(True)) 
+#    ll.insert_after('add' , 'nice')
+#    ll.insert_befor('python' , 'language')
+#    print(ll.includes('joud'))
+#    ll = ll.__str__()
+   ll.get_kth_from_end(0)
    print(ll)
   
