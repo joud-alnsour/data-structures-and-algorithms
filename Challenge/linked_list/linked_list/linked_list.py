@@ -57,19 +57,19 @@ class LinkedList:
         return self.__str__()
 
 
-    # def append(self,value):
-    #     if value == '':
-    #         raise TypeError('Node not empty')
-    #     else:
+    def append(self,value):
+        if value == '':
+            raise TypeError('Node not empty')
+        else:
             
-    #         if self.head is None:
-    #             self.head = value
+            if self.head is None:
+                self.head = value
             
-    #         else:
-    #             current = self.head
-    #             while current.next :
-    #                 current = current.next
-    #             current.next = value   
+            else:
+                current = self.head
+                while current.next :
+                    current = current.next
+                current.next = value   
 
 
     def insert_after(self, old , new):
@@ -132,6 +132,20 @@ class LinkedList:
         return current.value
 
 
+    def zip_lists(list_one, list_two):
+      current_one = list_one.head
+      current_two = list_two.head
+      result = LinkedList()
+      while current_one or current_two:
+          if current_one:
+             result.append(current_one.value)
+             current_one = current_one.next
+          if current_two:
+             result.append(current_two.value)
+             current_two = current_two.next
+      return result
+
+
 
 
 
@@ -142,7 +156,7 @@ if __name__ == '__main__':
    ll.insert('language')        
    ll.insert('best')
    ll.insert('is')
- 
+#    ll.append(Node('list')) 
 #    ll.x=Node('good')
 #    ll.insert(Node(True)) 
 #    ll.insert_after('add' , 'nice')
@@ -151,4 +165,3 @@ if __name__ == '__main__':
 #    ll = ll.__str__()
    ll.get_kth_from_end(0)
    print(ll)
-  
