@@ -31,6 +31,6 @@ Create a Linked List with all of the properties listed below:
 - [x] Create an append method
 - [x] insert_after method
 - [x] insert_befor method
-# Whiteboard Process
+
 
 
