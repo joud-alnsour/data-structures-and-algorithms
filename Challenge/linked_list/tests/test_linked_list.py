@@ -100,89 +100,48 @@ def test_kth_middle():
     assert ll.get_kth_from_end(2) == 'good'
 
 
-# def test_zip_lists_new_with_both_empty_lists(empty_ll):
-#     result = zip_lists(empty_ll, empty_ll)
-#     assert result.head == None
 
-# def test_zip_lists_new_with_empty_first_ll(empty_ll, ll_with_1_3_5):
-#     result = zip_lists(empty_ll, ll_with_1_3_5)
-#     print(result.head.value)
-#     assert ll_with_1_3_5.head.value == 1
-#     assert result.head.value == 1
-#     assert result.head.next.value == 3
-#     assert result.head.next.next.value == 5
-#     assert result.head.next.next.next == None
+def test_zip_same():
+    newList = LinkedList()
+    ll1 = LinkedList()
+    ll1.insert(1)
+    ll1.insert(3)
+    ll1.insert(2)
+    ll2 = LinkedList()
+    ll2.insert(5)
+    ll2.insert(9)
+    ll2.insert(4)
+    expected = newList.zip_lists(ll2, ll1)
+    actual = '1 ->5 ->3 ->9 ->2 ->4 ->NULL'
+    expected ==  actual
 
-# def test_zip_lists_new_with_empty_second_ll(ll_with_1_3_5, empty_ll):
-#     result = zip_lists(ll_with_1_3_5, empty_ll)
-#     assert result.head.value == 1
-#     assert result.head.next.value == 3
-#     assert result.head.next.next.value == 5
-#     assert result.head.next.next.next == None
 
-# def test_zip_lists_same_length(ll_with_1_3_5, ll_with_2_4_6):
-#     result = zip_lists(ll_with_1_3_5, ll_with_2_4_6)
-#     assert result.head.value == 1
-#     assert result.head.next.value == 2
-#     assert result.head.next.next.value == 3
-#     assert result.head.next.next.next.value == 4
-#     assert result.head.next.next.next.next.value == 5
-#     assert result.head.next.next.next.next.next.value == 6
-#     assert result.head.next.next.next.next.next.next == None
+def test_zip_ll2_shorter():
+    newList = LinkedList()
+    ll1 = LinkedList()
+    ll1.insert(7)
+    ll1.insert(8)
+    ll1.insert(6)
+    ll2 = LinkedList()
+    ll2.insert(0)
+    ll2.insert(11)
+    expected = newList.zip_lists(ll2, ll1)
+    actual = '7 ->0 ->8 ->11 ->6 ->NULL'
+    expected ==  actual
 
-# def test_zip_lists_new_longer_first_ll(ll_with_1_3_5, ll_with_2):
-#     result = zip_lists(ll_with_1_3_5, ll_with_2)
-#     assert result.head.value == 1
-#     assert result.head.next.value == 2
-#     assert result.head.next.next.value == 3
-#     assert result.head.next.next.next.value == 5
-#     assert result.head.next.next.next.next == None
 
-# def test_zip_lists_new_longer_second_ll(ll_with_1, ll_with_2_4_6):
-#     result = zip_lists_new(ll_with_1, ll_with_2_4_6)
-#     assert result.head.value == 1
-#     assert result.head.next.value == 2
-#     assert result.head.next.next.value == 4
-#     assert result.head.next.next.next.value == 6
-#     assert result.head.next.next.next.next == None
-
-# @pytest.fixture
-# def empty_ll():
-#     ll = LinkedList()
-#     return ll
-
-# @pytest.fixture
-# def ll_with_1_3_5():
-#     ll = LinkedList()
-#     ll.append(1)
-#     ll.append(3)
-#     ll.append(5)
-#     return ll
-
-# @pytest.fixture
-# def ll_with_2_4():
-#     ll = LinkedList()
-#     ll.append(2)
-#     ll.append(4)
-#     return ll
-
-# @pytest.fixture
-# def ll_with_2_4_6():
-#     ll = LinkedList()
-#     ll.append(2)
-#     ll.append(4)
-#     ll.append(6)
-#     return ll
-
-# @pytest.fixture
-# def ll_with_1():
-#     ll = LinkedList()
-#     ll.append(1)
-#     return ll
-
-# @pytest.fixture
-# def ll_with_2():
-#     ll = LinkedList()
-#     ll.append(2)
-#     return ll
-
+def test_zip_ll1_shorter():
+    newList = LinkedList()
+    ll1 = LinkedList()
+    ll1.insert(12)
+    ll1.insert(13)
+    ll1.insert(22)
+    ll2 = LinkedList()
+    ll2.insert(25)
+    ll2.insert(29)
+    ll1.insert(32)
+    ll1.insert(62)
+    expected = newList.zip_lists(ll2, ll1)
+    actual = '12 ->25 ->13 ->29 ->22 ->32 ->62 ->NULL'
+    expected ==  actual
+   

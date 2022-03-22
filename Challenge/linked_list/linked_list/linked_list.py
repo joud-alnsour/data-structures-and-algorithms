@@ -1,37 +1,31 @@
 
 
-
 class Node:
 
-
-    def __init__(self,value):
+    def __init__(self, value):
         self.value = value
         self.next = None
 
 
 class LinkedList:
 
-
     def __init__(self):
         self.head = None
 
-    
+    def insert(self, value):
 
-    def insert(self,value):
-        
-          
         if value == '':
             raise TypeError('empty value')
         else:
             value = Node(value)
             value.next = self.head
             self.head = value
-         
 
-    def includes(self,value):
+
+    def includes(self, value):
         if value is None:
             raise TypeError('empty value')
-        else:    
+        else:
             current = self.head
             while current:
                 if current.value == value:
@@ -52,28 +46,28 @@ class LinkedList:
                 message += "NULL"
             return message
 
-            
+
     def to_string(self):
         return self.__str__()
 
 
-    def append(self,value):
+    def append(self, value):
         if value == '':
             raise TypeError('Node not empty')
         else:
-            
+
             if self.head is None:
                 self.head = value
-            
+
             else:
                 current = self.head
-                while current.next :
+                while current.next:
                     current = current.next
-                current.next = value   
+                current.next = value
 
 
-    def insert_after(self, old , new):
-      
+    def insert_after(self, old, new):
+
         if new == None:
             raise TypeError('value is empty')
         if old == None:
@@ -81,7 +75,7 @@ class LinkedList:
         else:
             old = Node(old)
             new = Node(new)
-            current =  self.head
+            current = self.head
         while current:
             if current.value == old.value:
                 new.next = current.next
@@ -89,9 +83,8 @@ class LinkedList:
             current = current.next
         return
 
-       
 
-    def insert_befor(self, value , new):
+    def insert_befor(self, value, new):
         value = Node(value)
         new = Node(new)
         if self.head == None:
@@ -100,53 +93,48 @@ class LinkedList:
         if self.head.value == value:
             return
 
-        current =  self.head
-        if current.value== value:
-            new.next= current
-            self.head=new
+        current = self.head
+        if current.value == value:
+            new.next = current
+            self.head = new
         while current:
-            if current.next.value == value.value: 
-                new.next= current.next
-                current.next = new    
-                return 
-            current = current.next    
-            
-                
+            if current.next.value == value.value:
+                new.next = current.next
+                current.next = new
+                return
+            current = current.next
 
 
-    def get_kth_from_end(self,k):
+    def get_kth_from_end(self, k):
         extent = 0
-        current=self.head
-        if k<0:
-             raise Exception ('the index must be positive')
+        current = self.head
+        if k < 0:
+             raise Exception('the index must be positive')
         while current:
-            current = current.next 
-            extent = extent + 1 
+            current = current.next
+            extent = extent + 1
         if extent <= k:
-            raise Exception ('The index is out of bounds')
-        else: 
-            current=self.head
+            raise Exception('The index is out of bounds')
+        else:
+            current = self.head
         for i in range(extent - (k+1)):
             current = current.next
         print(current.value)
         return current.value
 
 
-    # def zip_lists(list_one, list_two):
-    #   current_one = list_one.head
-    #   current_two = list_two.head
-    #   result = LinkedList()
-    #   while current_one or current_two:
-    #       if current_one:
-    #          result.append(current_one.value)
-    #          current_one = current_one.next
-    #       if current_two:
-    #          result.append(current_two.value)
-    #          current_two = current_two.next
-    #   return result
-
-
-
+    def zip_lists(self,list_one, list_two):
+      current_one = list_one.head
+      current_two = list_two.head
+      result = LinkedList()
+      while current_one or current_two:
+          if current_one:
+             result.insert(current_one.value)
+             current_one = current_one.next
+          if current_two:
+             result.insert(current_two.value)
+             current_two = current_two.next
+      return result
 
 
 if __name__ == '__main__':
@@ -156,7 +144,7 @@ if __name__ == '__main__':
    ll.insert('language')        
    ll.insert('best')
    ll.insert('is')
-#    ll.append(Node('list')) 
+   ll.append(Node('list')) 
 #    ll.x=Node('good')
 #    ll.insert(Node(True)) 
 #    ll.insert_after('add' , 'nice')
