@@ -1,4 +1,13 @@
 class Node:
+ 
+
+
+    def __init__(self,value):
+        self.value = value
+        self.next = None
+
+
+class Stack():
     """
     Stack property: top
     Stack methods:
@@ -18,15 +27,6 @@ class Node:
         - Arguments: none
         - Returns: Boolean indicating whether or not the stack is empty.
     """
-
-
-    def __init__(self,value):
-        self.value = value
-        self.next = None
-
-
-class Stack():
-    
 
     def __init__(self, top=None):
         self.top = top
