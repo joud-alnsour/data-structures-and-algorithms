@@ -67,7 +67,7 @@ space:O(1)
      - Returns: Boolean indicating whether or not the queue is empty    
 ## Whiteboard Process
 **PseudoQueue**
-![pic](/PseudoQueue.jpg)
+![pic](/stack_and_queue/PseudoQueue.jpg)
 
 ## Solution
 ***Code***

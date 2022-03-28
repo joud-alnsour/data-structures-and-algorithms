@@ -10,7 +10,7 @@
 | 5	 | linked-list-insertions | [Link](/Challenge/linked_list/README.md) |
 | 6	 | linked-list-kth | [Link](/Challenge/linked_list/linked_list_kth.md) |
 | 7	 | linked-list-zip | [Link](/Challenge/linked_list/linked_list_zip.md) |
-
+| 8	 | stack_and_queue | [Link](/stack_and_queue/README.md) |
 
 
 
