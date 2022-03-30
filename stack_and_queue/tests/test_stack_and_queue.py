@@ -1,4 +1,4 @@
-from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue
+from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter
 import pytest
 
 def test_stack():
@@ -119,3 +119,42 @@ def test_pseudo_queue_dequeue_multi():
     assert pseudo.dequeue() == 2
     assert pseudo.dequeue() == 1
 
+# new test
+def test_animal_shelter():
+    animal_shelter = AnimalShelter()
+    assert animal_shelter
+def test_animal_shelter_enqueue_cat():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'cat'
+    assert actual == expected
+def test_animal_shelter_enqueue_dog():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'dog'
+    assert actual == expected
+def test_animal_shelter_enqueue_multiple():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'dog'
+    assert actual == expected
+def test_animal_shelter_enqueue_return_none():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'cat'
+    assert actual != expected
+
+def test_animal_shelter_dequeue():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    animal_shelter.enqueue('cat')
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.dequeue('cat')
+    expected = 'cat'
+    assert actual == expected
+   

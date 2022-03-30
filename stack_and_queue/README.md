@@ -68,9 +68,10 @@ space:O(1)
 ## Whiteboard Process
 **PseudoQueue**
 ![pic](/stack_and_queue/PseudoQueue.jpg)
-
+**AnimalShelter**<br>
+![pic](/stack_and_queue/AnimalShelter.jpg)
 ## Solution
-***Code***
+***Code 1***
 ```
 class PseudoQueue:
  
@@ -113,7 +114,7 @@ class PseudoQueue:
     def is_empty(self):
         return self.storage.top == None
 ```
-***Test***  
+***Test 1***  
 ``` 
 def test_pseudo_queue():
     pseudo = PseudoQueue()
@@ -151,4 +152,79 @@ def test_pseudo_queue_dequeue_multi():
     assert pseudo.dequeue() == 2
     assert pseudo.dequeue() == 1
 ```    
+***Code 2***
+```
+class Dog():
+    def __init__(self):
+        self.animal_name = "dog"
 
+class Cat():
+    def __init__(self):
+        self.animal_name = "cat"
+  
+class AnimalShelter():
+    def __init__(self):
+        self.in_stack = Stack()
+        self.out_stack = Stack()
+
+    def enqueue(self, animal):
+        if animal != 'dog' and animal != 'cat':
+            return None
+        while self.in_stack.top:
+            newValue = self.in_stack.pop()
+            self.out_stack.push(newValue)
+        self.in_stack.push(animal)
+        while self.out_stack.top:
+            newValue = self.out_stack.pop()
+            self.in_stack.push(newValue)
+
+    def dequeue(self, pref):
+        if pref != 'dog' and pref != 'cat':
+            return None
+        elif pref == 'cat' and self.in_stack.top == 'cat':
+            self.in_stack.pop()
+        elif pref == 'dog' and self.in_stack.top == 'dog':
+            self.in_stack.pop()
+
+``` 
+***Test 2***
+``` 
+def test_animal_shelter():
+    animal_shelter = AnimalShelter()
+    assert animal_shelter
+def test_animal_shelter_enqueue_cat():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'cat'
+    assert actual == expected
+def test_animal_shelter_enqueue_dog():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'dog'
+    assert actual == expected
+def test_animal_shelter_enqueue_multiple():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'dog'
+    assert actual == expected
+def test_animal_shelter_enqueue_return_none():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    actual = animal_shelter.in_stack.peek()
+    expected = 'cat'
+    assert actual != expected
+
+def test_animal_shelter_dequeue():
+    animal_shelter = AnimalShelter()
+    animal_shelter.enqueue('dog')
+    animal_shelter.enqueue('cat')
+    animal_shelter.enqueue('cat')
+    actual = animal_shelter.dequeue('cat')
+    expected = 'cat'
+    assert actual == expected
+   
+``` 
