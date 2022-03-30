@@ -154,7 +154,8 @@ def test_animal_shelter_dequeue():
     animal_shelter.enqueue('dog')
     animal_shelter.enqueue('cat')
     animal_shelter.enqueue('cat')
-    actual = animal_shelter.dequeue('cat')
-    expected = 'cat'
+    animal_shelter.dequeue('cat')
+    actual=animal_shelter.in_stack.peek()
+    expected = 'dog'
     assert actual == expected
    
