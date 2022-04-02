@@ -12,25 +12,6 @@ Space: O(n)
 ## Solution
 ***Code***
 ```
-    def get_kth_from_end(self,k):
-        extent = 0
-        current=self.head
-        if k<0:
-             raise Exception ('the index must be positive')
-        while current:
-            current = current.next 
-            extent = extent + 1 
-        if extent <= k:
-            raise Exception ('The index is out of bounds')
-        else: 
-            current=self.head
-        for i in range(extent - (k+1)):
-            current = current.next
-        print(current.value)
-        return current.value
-```
-***Test***  
-``` 
 def test_kth_out_of_range():
     with pytest.raises(Exception):
         ll=LinkedList() 
@@ -38,9 +19,9 @@ def test_kth_out_of_range():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(5)
-        actual = 'The index is out of bounds'
-        expected ==  actual
+        actual = ll.get_kth_from_end(5)
+        expected = 'The index is out of bounds'
+        assert actual ==  expected
 
 def test_kth_same_to_lengh():
     with pytest.raises(Exception):
@@ -49,9 +30,9 @@ def test_kth_same_to_lengh():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(4)
-        actual = 'python'
-        expected ==  actual
+        actual = ll.get_kth_from_end(3)
+        expected = 'language'
+        assert actual ==  expected
 
 
 def test_kth_not_positive():
@@ -61,16 +42,16 @@ def test_kth_not_positive():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(-2)
-        actual = 'the index must be positive'
-        expected ==  actual
+        actual = ll.get_kth_from_end(-2)
+        expected = 'the index must be positive'
+        assert actual ==  expected
 
 def test_kth_one_node():
     ll=LinkedList() 
     ll.insert('language')        
-    expected = ll.get_kth_from_end(0)
-    actual = 'language'
-    expected ==  actual
+    actual = ll.get_kth_from_end(0)
+    expected = 'language'
+    assert actual ==  expected
 
 def test_kth_middle():
     ll=LinkedList() 
@@ -79,8 +60,8 @@ def test_kth_middle():
     ll.insert('good')
     ll.insert('is')
     ll.insert('python')
-    expected = ll.get_kth_from_end(2) 
-    actual =  'good'
-    expected ==  actual
+    actual = ll.get_kth_from_end(2) 
+    expected =  'good'
+    assert actual ==  expected
 ```    
 

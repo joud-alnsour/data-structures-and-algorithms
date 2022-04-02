@@ -62,9 +62,9 @@ def test_kth_out_of_range():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(5)
-        actual = 'The index is out of bounds'
-        expected ==  actual
+        actual = ll.get_kth_from_end(5)
+        expected = 'The index is out of bounds'
+        assert actual ==  expected
 
 def test_kth_same_to_lengh():
     with pytest.raises(Exception):
@@ -73,9 +73,9 @@ def test_kth_same_to_lengh():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(4)
-        actual = 'python'
-        expected ==  actual
+        actual = ll.get_kth_from_end(3)
+        expected = 'language'
+        assert actual ==  expected
 
 
 def test_kth_not_positive():
@@ -85,16 +85,16 @@ def test_kth_not_positive():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        expected = ll.get_kth_from_end(-2)
-        actual = 'the index must be positive'
-        expected ==  actual
+        actual = ll.get_kth_from_end(-2)
+        expected = 'the index must be positive'
+        assert actual ==  expected
 
 def test_kth_one_node():
     ll=LinkedList() 
     ll.insert('language')        
-    expected = ll.get_kth_from_end(0)
-    actual = 'language'
-    expected ==  actual
+    actual = ll.get_kth_from_end(0)
+    expected = 'language'
+    assert actual ==  expected
 
 def test_kth_middle():
     ll=LinkedList() 
@@ -103,9 +103,9 @@ def test_kth_middle():
     ll.insert('good')
     ll.insert('is')
     ll.insert('python')
-    expected = ll.get_kth_from_end(2) 
-    actual =  'good'
-    expected ==  actual
+    actual = ll.get_kth_from_end(2) 
+    expected =  'good'
+    assert actual ==  expected
 
 
 def test_zip_same():
@@ -118,9 +118,9 @@ def test_zip_same():
     ll2.insert(5)
     ll2.insert(9)
     ll2.insert(4)
-    expected = newList.zip_lists(ll2, ll1)
-    actual = '1 ->5 ->3 ->9 ->2 ->4 ->NULL'
-    expected ==  actual
+    actual = newList.zip_lists(ll2, ll1)
+    expected = '5 ->1 ->9 ->3 ->4 ->2 ->NULL'
+    assert actual ==  expected
 
 
 def test_zip_ll2_shorter():
@@ -132,9 +132,9 @@ def test_zip_ll2_shorter():
     ll2 = LinkedList()
     ll2.insert(0)
     ll2.insert(11)
-    expected = newList.zip_lists(ll2, ll1)
-    actual = '7 ->0 ->8 ->11 ->6 ->NULL'
-    expected ==  actual
+    actual = newList.zip_lists(ll2, ll1)
+    expected = '7 ->0 ->8 ->11 ->6 ->NULL'
+    assert actual ==  expected
 
 
 def test_zip_ll1_shorter():
@@ -148,9 +148,10 @@ def test_zip_ll1_shorter():
     ll2.insert(29)
     ll1.insert(32)
     ll1.insert(62)
-    expected = newList.zip_lists(ll2, ll1)
-    actual = '12 ->25 ->13 ->29 ->22 ->32 ->62 ->NULL'
-    expected ==  actual
+    actual = newList.zip_lists(ll2, ll1)
+    expected = '12 ->25 ->13 ->29 ->22 ->32 ->62 ->NULL'
+    assert actual ==  expected
+
 
 
 
