@@ -62,8 +62,9 @@ def test_kth_out_of_range():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        ll.get_kth_from_end(5)
-
+        expected = ll.get_kth_from_end(5)
+        actual = 'The index is out of bounds'
+        expected ==  actual
 
 def test_kth_same_to_lengh():
     with pytest.raises(Exception):
@@ -72,7 +73,9 @@ def test_kth_same_to_lengh():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        ll.get_kth_from_end(4)
+        expected = ll.get_kth_from_end(4)
+        actual = 'python'
+        expected ==  actual
 
 
 def test_kth_not_positive():
@@ -82,14 +85,16 @@ def test_kth_not_positive():
         ll.insert('best')
         ll.insert('a')
         ll.insert('python')
-        ll.get_kth_from_end(-2)
-
+        expected = ll.get_kth_from_end(-2)
+        actual = 'the index must be positive'
+        expected ==  actual
 
 def test_kth_one_node():
     ll=LinkedList() 
     ll.insert('language')        
-    assert ll.get_kth_from_end(0) == 'language'
-
+    expected = ll.get_kth_from_end(0)
+    actual = 'language'
+    expected ==  actual
 
 def test_kth_middle():
     ll=LinkedList() 
@@ -98,8 +103,9 @@ def test_kth_middle():
     ll.insert('good')
     ll.insert('is')
     ll.insert('python')
-    assert ll.get_kth_from_end(2) == 'good'
-
+    expected = ll.get_kth_from_end(2) 
+    actual =  'good'
+    expected ==  actual
 
 
 def test_zip_same():
