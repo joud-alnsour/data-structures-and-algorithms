@@ -1,4 +1,4 @@
-from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter
+from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter, validate_brackets 
 import pytest
 
 def test_stack():
@@ -85,8 +85,7 @@ def test_dequeue_empty():
         queue = Queue()
         queue.dequeue()
 
-#New PseudoQueue
-
+# New Code Challenge: Class 11
 def test_pseudo_queue():
     pseudo = PseudoQueue()
     assert pseudo
@@ -119,7 +118,7 @@ def test_pseudo_queue_dequeue_multi():
     assert pseudo.dequeue() == 2
     assert pseudo.dequeue() == 1
 
-# new test
+# New Code Challenge: Class 12
 def test_animal_shelter():
     animal_shelter = AnimalShelter()
     assert animal_shelter
@@ -158,4 +157,28 @@ def test_animal_shelter_dequeue():
     actual=animal_shelter.in_stack.peek()
     expected = 'dog'
     assert actual == expected
-   
+
+# New Code Challenge: Class 13
+def test_string_one():
+    string = "{[]{()}}"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+
+def test_string_two():
+    string = "[[()]]"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+
+def test_string_three_spaces():
+    string = "{ [ ) )"
+    actual = validate_brackets(string)
+    expected = False
+    assert actual == expected
+
+def test_empty_string():
+    string = ""
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
