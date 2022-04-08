@@ -195,7 +195,7 @@ class AnimalShelter():
         return f'{self.sanctuary}'    
 
     def enqueue(self, animal):
-        if not isinstance(animal,Cat) and not isinstance(animal,Dog):
+        if isinstance(animal,Cat) and isinstance(animal,Dog):
             return ('just a cat or a dog')
         else:
             self.sanctuary.enqueue(animal)
