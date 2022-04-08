@@ -168,77 +168,63 @@ class PseudoQueue:
 
     def is_empty(self):
         return self.storage.top == None
+    
                 
-# New Code Challenge: Class 12
+# new code
 class Dog():
     def __init__(self):
         self.animal_name = "dog"
 
+    def __str__(self):
+        return f'{self.animal_name}'    
+
 class Cat():
     def __init__(self):
         self.animal_name = "cat"
+
+    def __str__(self):
+        return f'{self.animal_name}'    
   
 class AnimalShelter():
     def __init__(self):
-        self.in_stack = Stack()
-        self.out_stack = Stack()
+        self.sanctuary = Queue()
+        self.dog = Dog()
+        self.cat = Cat()
+
+    def __str__(self):
+        return f'{self.sanctuary}'    
 
     def enqueue(self, animal):
-        if animal != 'dog' and animal != 'cat':
-            return None
-        while self.in_stack.top:
-            newValue = self.in_stack.pop()
-            self.out_stack.push(newValue)
-        self.in_stack.push(animal)
-        while self.out_stack.top:
-            newValue = self.out_stack.pop()
-            self.in_stack.push(newValue)
+        if not isinstance(animal,Cat) and not isinstance(animal,Dog):
+            return ('just a cat or a dog')
+        else:
+            self.sanctuary.enqueue(animal)
 
-    def dequeue(self, pref):
+    def dequeue(self, pref= 'fish'):
         if pref != 'dog' and pref != 'cat':
-            return None
-        elif pref == 'cat' and self.in_stack.top == 'cat':
-            self.in_stack.pop()
-        elif pref == 'dog' and self.in_stack.top == 'dog':
-            self.in_stack.pop()   
-
-# New Code Challenge: Class 13
-def validate_brackets(string):
-    open_tags = ["{","[","("]
-    closing_tags = ["}","]",")"]
-    validate = []
-
-    for i in string:
-        if i in open_tags:
-            validate.append(open_tags.index(i))
-            print(f"Validate open tags in this way: {open_tags.index(i)}")
-
-
-        elif i in closing_tags:
-            if ((len(validate) > 0) and (closing_tags.index(i) == validate[-1])):
-                print(f"Validate the closing tags in this way: {closing_tags.index(i)}")
-                validate.pop()
+            if not self.sanctuary.is_empty():
+                return self.sanctuary.dequeue()
             else:
-                return False
+                return None
+        if str(self.sanctuary.peek()) == pref:
+            return self.sanctuary.dequeue()
 
-    if len(validate) == 0:
-        return True
-    else:
-        return False
+        new = self.sanctuary.front
+        previous = None
+        while new:
+            
+            if str(new.value) == pref:
+                previous.next = new.next
+                new.next = None   
+                return new.value
+            previous = new
+            new = new.next
+                
+        if not self.sanctuary.is_empty():
+                raise Exception (f'animal shelter dont have {pref}') 
+        
+        else:
+                raise Exception ('animal shelter is empty')               
 
 if __name__ == '__main__':
-    # New Code Challenge: Class 13
-      test1 = "[()}"
-      print(test1, validate_brackets(test1))
-
-      test2 = "[][]"
-      print(test2, validate_brackets(test2))
-
-      test3 = "([])"
-      print(test3, validate_brackets(test3))
-
-      test4 = ")))))"
-      print(test4, validate_brackets(test4))
-
-      test5 = "[[()]]"
-      print(test5, validate_brackets(test5))             
+   pass               

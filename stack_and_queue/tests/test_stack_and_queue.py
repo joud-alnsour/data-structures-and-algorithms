@@ -1,4 +1,4 @@
-from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter, validate_brackets 
+from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter, Dog, Cat
 import pytest
 
 def test_stack():
@@ -85,7 +85,8 @@ def test_dequeue_empty():
         queue = Queue()
         queue.dequeue()
 
-# New Code Challenge: Class 11
+#New PseudoQueue
+
 def test_pseudo_queue():
     pseudo = PseudoQueue()
     assert pseudo
@@ -118,67 +119,25 @@ def test_pseudo_queue_dequeue_multi():
     assert pseudo.dequeue() == 2
     assert pseudo.dequeue() == 1
 
-# New Code Challenge: Class 12
-def test_animal_shelter():
-    animal_shelter = AnimalShelter()
-    assert animal_shelter
-def test_animal_shelter_enqueue_cat():
-    animal_shelter = AnimalShelter()
-    animal_shelter.enqueue('cat')
-    actual = animal_shelter.in_stack.peek()
-    expected = 'cat'
-    assert actual == expected
-def test_animal_shelter_enqueue_dog():
-    animal_shelter = AnimalShelter()
-    animal_shelter.enqueue('dog')
-    actual = animal_shelter.in_stack.peek()
-    expected = 'dog'
-    assert actual == expected
-def test_animal_shelter_enqueue_multiple():
-    animal_shelter = AnimalShelter()
-    animal_shelter.enqueue('dog')
-    animal_shelter.enqueue('cat')
-    actual = animal_shelter.in_stack.peek()
-    expected = 'dog'
-    assert actual == expected
-def test_animal_shelter_enqueue_return_none():
-    animal_shelter = AnimalShelter()
-    animal_shelter.enqueue('dog')
-    actual = animal_shelter.in_stack.peek()
-    expected = 'cat'
-    assert actual != expected
+# new test
+def test_animal():
+    animal = AnimalShelter()
+    [animal.enqueue(j) for j in [Cat(),Dog(),Dog()]]
+    assert str(animal.sanctuary.peek()) == 'cat'
 
-def test_animal_shelter_dequeue():
-    animal_shelter = AnimalShelter()
-    animal_shelter.enqueue('dog')
-    animal_shelter.enqueue('cat')
-    animal_shelter.enqueue('cat')
-    animal_shelter.dequeue('cat')
-    actual=animal_shelter.in_stack.peek()
-    expected = 'dog'
-    assert actual == expected
+def test_animal_dequeue():
+    animal = AnimalShelter()
+    [animal.enqueue(j) for j in [Cat(),Dog(),Dog()]]
+    assert str(animal.dequeue('dog')) == 'dog'
+    assert str(animal.sanctuary.peek()) == 'cat'
 
-# New Code Challenge: Class 13
-def test_string_one():
-    string = "{[]{()}}"
-    actual = validate_brackets(string)
-    expected = True
-    assert actual == expected
+def test_animle_dequeue():
+    animal = AnimalShelter()
+    [animal.enqueue(j) for j in [Cat(),Dog(),Dog()]]
+    assert str(animal.dequeue('cat')) == 'cat'
+    assert str(animal.dequeue('fish')) == 'dog'
 
-def test_string_two():
-    string = "[[()]]"
-    actual = validate_brackets(string)
-    expected = True
-    assert actual == expected
-
-def test_string_three_spaces():
-    string = "{ [ ) )"
-    actual = validate_brackets(string)
-    expected = False
-    assert actual == expected
-
-def test_empty_string():
-    string = ""
-    actual = validate_brackets(string)
-    expected = True
-    assert actual == expected
+def test_animal_empty():
+    with pytest.raises(Exception):
+        animal = AnimalShelter()
+        assert animal.dequeue()
