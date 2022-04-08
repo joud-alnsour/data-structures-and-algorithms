@@ -1,4 +1,4 @@
-# Stacks and Queues and PseudoQueue
+# Stacks and Queues and PseudoQueue and Animal Shelter
 **Stack:**<br>
 A stack is a limited access data structure - elements can be added and removed from the stack only at the top. push adds an item to the top of the stack, pop removes the item from the top. <br>
 
@@ -8,6 +8,9 @@ A stack is a limited access data structure - elements can be added and removed f
  **Validate Brackets:**<br>
 function called validate brackets
 
+**Animal Shelter**<br>
+Create a class called AnimalShelter which holds only dogs and cats.
+The shelter operates using a first-in, first-out approach.
 ## Challenge
 - Create a Node class , class Stack , class Queue , class PseudoQueue
 - have (push,pop,peek,is empty) methods inside class Stack 
@@ -17,16 +20,26 @@ function called validate brackets
 - function called validate brackets:
    - Arguments: string
    - Return: boolean
-- The method will return a true if (), {}, and [] are balanced. Also need to check the order of the braces, so ({)} would still False.
+- The method will return a true if (), {}, and [] are balanced. Also need to check the order of the braces, so ({)} would still False.<br>
+**Animal Shelter**<br>
+- have (enqueue,dequeue) methods inside class AnimalShelter
+
 ## Approach & Efficiency
 Big O <br>
 time:O(1)<br>
 space:O(1)<br>
-**validate brackets**
+**validate brackets**<br>
 The method will loop through the string, stacking the opening braces. When the loop reaches a closing brace, it will pop the stack and compare it to the previous one.
 Big O<br>
 time:O(n)<br>
-space:O(n)
+space:O(n)<br>
+**Animal Shelter**<br>
+Big O for enqueue<br> 
+time:O(1)<br>
+space:O(1)<br>
+Big O for dequeue<br>
+time:O(n)<br>
+space:O(n)<br>
 ## API
 **Stack methods API**
 - Stack instance variable: top
