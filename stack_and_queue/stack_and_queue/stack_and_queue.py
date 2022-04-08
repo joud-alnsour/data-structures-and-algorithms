@@ -168,39 +168,63 @@ class PseudoQueue:
 
     def is_empty(self):
         return self.storage.top == None
+    
                 
 # new code
 class Dog():
     def __init__(self):
         self.animal_name = "dog"
 
+    def __str__(self):
+        return f'{self.animal_name}'    
+
 class Cat():
     def __init__(self):
         self.animal_name = "cat"
+
+    def __str__(self):
+        return f'{self.animal_name}'    
   
 class AnimalShelter():
     def __init__(self):
-        self.in_stack = Stack()
-        self.out_stack = Stack()
+        self.sanctuary = Queue()
+        self.dog = Dog()
+        self.cat = Cat()
+
+    def __str__(self):
+        return f'{self.sanctuary}'    
 
     def enqueue(self, animal):
-        if animal != 'dog' and animal != 'cat':
-            return None
-        while self.in_stack.top:
-            newValue = self.in_stack.pop()
-            self.out_stack.push(newValue)
-        self.in_stack.push(animal)
-        while self.out_stack.top:
-            newValue = self.out_stack.pop()
-            self.in_stack.push(newValue)
+        if not isinstance(animal,Cat) and not isinstance(animal,Dog):
+            return ('just a cat or a dog')
+        else:
+            self.sanctuary.enqueue(animal)
 
-    def dequeue(self, pref):
+    def dequeue(self, pref= 'fish'):
         if pref != 'dog' and pref != 'cat':
-            return None
-        elif pref == 'cat' and self.in_stack.top == 'cat':
-            self.in_stack.pop()
-        elif pref == 'dog' and self.in_stack.top == 'dog':
-            self.in_stack.pop()                
+            if not self.sanctuary.is_empty():
+                return self.sanctuary.dequeue()
+            else:
+                return None
+        if str(self.sanctuary.peek()) == pref:
+            return self.sanctuary.dequeue()
+
+        new = self.sanctuary.front
+        previous = None
+        while new:
+            
+            if str(new.value) == pref:
+                previous.next = new.next
+                new.next = None   
+                return new.value
+            previous = new
+            new = new.next
+                
+        if not self.sanctuary.is_empty():
+                raise Exception (f'animal shelter dont have {pref}') 
+        
+        else:
+                raise Exception ('animal shelter is empty')               
 
 if __name__ == '__main__':
    pass               

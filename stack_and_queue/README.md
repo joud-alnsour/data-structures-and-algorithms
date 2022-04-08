@@ -1,19 +1,32 @@
 # Stacks and Queues and PseudoQueue
 **Stack:**<br>
 A stack is a limited access data structure - elements can be added and removed from the stack only at the top. push adds an item to the top of the stack, pop removes the item from the top. <br>
+
 **Queue:**<br>
  New additions to a line made to the back of the queue, while removal (or serving) happens in the front. In the queue only two operations are allowed enqueue and dequeue. Enqueue means to insert an item into the back of the queue, dequeue means removing the front item.<br>
 
+ **Validate Brackets:**<br>
+function called validate brackets
 
 ## Challenge
 - Create a Node class , class Stack , class Queue , class PseudoQueue
 - have (push,pop,peek,is empty) methods inside class Stack 
 - have (enqueue,dequeue,peek,is empty) methods inside class Queue
 - have (enqueue,dequeue,peek,is empty) methods inside class PseudoQueue
+**validate brackets**
+- function called validate brackets:
+   - Arguments: string
+   - Return: boolean
+- The method will return a true if (), {}, and [] are balanced. Also need to check the order of the braces, so ({)} would still False.
 ## Approach & Efficiency
 Big O <br>
 time:O(1)<br>
-space:O(1)
+space:O(1)<br>
+**validate brackets**
+The method will loop through the string, stacking the opening braces. When the loop reaches a closing brace, it will pop the stack and compare it to the previous one.
+Big O<br>
+time:O(n)<br>
+space:O(n)
 ## API
 **Stack methods API**
 - Stack instance variable: top
@@ -64,14 +77,24 @@ space:O(1)
      - Should raise exception when called on empty stack
 - is_empty
      - Arguments: none
-     - Returns: Boolean indicating whether or not the queue is empty    
+     - Returns: Boolean indicating whether or not the queue is empty 
+
 ## Whiteboard Process
+
 **PseudoQueue**
+
 ![pic](/stack_and_queue/PseudoQueue.jpg)
+
 **AnimalShelter**<br>
+
 ![pic](/stack_and_queue/AnimalShelter.jpg)
+
+**validate brackets**<br>
+
+![pic](/stack_and_queue/ValidateBrackets.jpg)
+
 ## Solution
-***Code 1***
+***Code PseudoQueue***
 ```
 class PseudoQueue:
  
@@ -114,7 +137,7 @@ class PseudoQueue:
     def is_empty(self):
         return self.storage.top == None
 ```
-***Test 1***  
+***Test PseudoQueue***  
 ``` 
 def test_pseudo_queue():
     pseudo = PseudoQueue()
@@ -152,7 +175,7 @@ def test_pseudo_queue_dequeue_multi():
     assert pseudo.dequeue() == 2
     assert pseudo.dequeue() == 1
 ```    
-***Code 2***
+***Code Animal Shelter***
 ```
 class Dog():
     def __init__(self):
@@ -187,7 +210,7 @@ class AnimalShelter():
             self.in_stack.pop()
 
 ``` 
-***Test 2***
+***Test Animal Shelter***
 ``` 
 def test_animal_shelter():
     animal_shelter = AnimalShelter()
@@ -227,4 +250,58 @@ def test_animal_shelter_dequeue():
     expected = 'cat'
     assert actual == expected
    
+```
+> Solution for Code Challenge: Class 13<br>
+
+***Code validate brackets***
+``` 
+def validate_brackets(string):
+    open_tags = ["{","[","("]
+    closing_tags = ["}","]",")"]
+    validate = []
+
+    for i in string:
+        if i in open_tags:
+            validate.append(open_tags.index(i))
+            print(f"Validate open tags in this way: {open_tags.index(i)}")
+
+
+        elif i in closing_tags:
+            if ((len(validate) > 0) and (closing_tags.index(i) == validate[-1])):
+                print(f"Validate the closing tags in this way: {closing_tags.index(i)}")
+                validate.pop()
+            else:
+                return False
+
+    if len(validate) == 0:
+        return True
+    else:
+        return False
+
+``` 
+***Test validate brackets***
+```
+def test_string_one():
+    string = "{[]{()}}"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+
+def test_string_two():
+    string = "[[()]]"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+
+def test_string_three_spaces():
+    string = "{ [ ) )"
+    actual = validate_brackets(string)
+    expected = False
+    assert actual == expected
+
+def test_empty_string():
+    string = ""
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected 
 ``` 
