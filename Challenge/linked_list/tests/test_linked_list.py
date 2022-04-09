@@ -151,8 +151,3 @@ def test_zip_ll1_shorter():
     actual = newList.zip_lists(ll2, ll1)
     expected = '12 ->25 ->13 ->29 ->22 ->32 ->62 ->NULL'
     assert actual ==  expected
-
-
-
-
-
