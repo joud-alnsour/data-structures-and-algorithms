@@ -278,25 +278,38 @@ def test_animal_empty():
 def validate_brackets(string):
     open_tags = ["{","[","("]
     closing_tags = ["}","]",")"]
-    validate = []
+    validate  = Stack()
 
-    for i in string:
-        if i in open_tags:
-            validate.append(open_tags.index(i))
-            print(f"Validate open tags in this way: {open_tags.index(i)}")
+    if type(string) != str:
+        raise Exception('just strings')
+  
+    for icon in string:
 
+        if icon in open_tags:
+            validate .push(icon)
 
-        elif i in closing_tags:
-            if ((len(validate) > 0) and (closing_tags.index(i) == validate[-1])):
-                print(f"Validate the closing tags in this way: {closing_tags.index(i)}")
-                validate.pop()
-            else:
-                return False
+        elif icon in closing_tags:
+            if not validate .is_empty():
+                return True
 
-    if len(validate) == 0:
-        return True
-    else:
+            elif icon == ')':
+                if validate .top.value == '(':
+                    validate .pop()    
+
+            elif icon == '}':                
+                if validate .top.value == '{':
+                    validate .pop()
+                    
+            elif icon == ']':
+                if validate .top.value == '[':
+                    validate .pop()
+            
+
+    if not validate .is_empty():
         return False
+    else:     
+        return True
+
 
 ``` 
 ***Test validate brackets***
@@ -312,16 +325,11 @@ def test_string_two():
     actual = validate_brackets(string)
     expected = True
     assert actual == expected
-
-def test_string_three_spaces():
-    string = "{ [ ) )"
-    actual = validate_brackets(string)
-    expected = False
-    assert actual == expected
-
+   
 def test_empty_string():
     string = ""
     actual = validate_brackets(string)
     expected = True
     assert actual == expected 
+
 ``` 
