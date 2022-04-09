@@ -19,3 +19,8 @@ I took a TDD approach with this because that would be the optimal way when writi
 pre_order - returns a list of the values in a Binary Tree via a pre order traversal. in_order - returns a list of the values in a Binary Tree via an in order traversal. post_order - returns a list of the values in a Binary Tree via a post order traversal.
 
 add - Adds a value to a binary search tree contains - Returns a boolean indicating whether or not the given value is in the tree at least once.
+
+- [x] Create (Node class,BinaryTree class and BinarySearchTree class).
+- [x] Create (pre_order method ,in_order method, post_order method,Add method and Contains method).
+
+
