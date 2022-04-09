@@ -1,4 +1,5 @@
-from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter, Dog, Cat
+from pickle import TRUE
+from stack_and_queue.stack_and_queue import Stack, Queue, PseudoQueue, AnimalShelter, Dog, Cat, validate_brackets
 import pytest
 
 def test_stack():
@@ -141,3 +142,21 @@ def test_animal_empty():
     with pytest.raises(Exception):
         animal = AnimalShelter()
         assert animal.dequeue()
+
+def test_string_one():
+    string = "{[]{()}}"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+
+def test_string_two():
+    string = "[[()]]"
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected
+   
+def test_empty_string():
+    string = ""
+    actual = validate_brackets(string)
+    expected = True
+    assert actual == expected 

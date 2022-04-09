@@ -224,7 +224,43 @@ class AnimalShelter():
                 raise Exception (f'animal shelter dont have {pref}') 
         
         else:
-                raise Exception ('animal shelter is empty')               
+                raise Exception ('animal shelter is empty')   
+
+def validate_brackets(string):
+    open_tags = ["{","[","("]
+    closing_tags = ["}","]",")"]
+    validate  = Stack()
+
+    if type(string) != str:
+        raise Exception('just strings')
+  
+    for icon in string:
+
+        if icon in open_tags:
+            validate .push(icon)
+
+        elif icon in closing_tags:
+            if not validate .is_empty():
+                return True
+
+            elif icon == ')':
+                if validate .top.value == '(':
+                    validate .pop()    
+
+            elif icon == '}':                
+                if validate .top.value == '{':
+                    validate .pop()
+                    
+            elif icon == ']':
+                if validate .top.value == '[':
+                    validate .pop()
+            
+
+    if not validate .is_empty():
+        return False
+    else:     
+        return True
+
 
 if __name__ == '__main__':
    pass               
