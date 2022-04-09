@@ -1,4 +1,4 @@
-# Stacks and Queues and PseudoQueue and Animal Shelter
+# Stacks and Queues and PseudoQueue and Animal Shelter and Validate Brackets: 
 **Stack:**<br>
 A stack is a limited access data structure - elements can be added and removed from the stack only at the top. push adds an item to the top of the stack, pop removes the item from the top. <br>
 
