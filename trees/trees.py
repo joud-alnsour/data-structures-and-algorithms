@@ -49,6 +49,24 @@ class BinaryTree:
         walk(self.root)
         return post_list
 
+    
+    def max_value(self):
+        # going to use the post order left > right > root to find the max value
+        if self.root == None:
+            raise Exception("Sorry this Tree is currently empty")
+
+        # current_max_value = 0
+        z = {'max_value': 0}
+        def walk(node, z):
+            if node:
+                walk(node.left, z)
+                walk(node.right, z)
+                if node.value > z["max_value"]:
+                    z['max_value'] = node.value
+        walk(self.root, z)
+        return z['max_value']
+
+
 class BinarySearchTree(BinaryTree):
 
     def add(self, value):

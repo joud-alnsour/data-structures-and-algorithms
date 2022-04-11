@@ -67,3 +67,46 @@ def test_binary_search_contains_true():
     one.right = Node (3)
     bst = BinarySearchTree(one)
     assert bst.contains(3) == True
+
+#Max Value Test
+def test_max_value():
+    one = Node(1)
+    three = Node(3)
+    four = Node(4)
+    bt = BinaryTree(one)
+    one.left = four
+    one.right = three
+    assert one.left == bt.root.left
+    assert one.right == three
+    max = bt.max_value()
+    assert max == 4
+
+
+def test_max_right():
+    root = Node(5)
+    root.left = Node(3)
+    root.right = Node(6)
+    bt = BinaryTree(root)
+    assert bt.max_value() == 6
+
+def test_max_is_empty():
+    bt = BinaryTree()
+    with pytest.raises(Exception):
+        bt.max_value()
+
+def test_max_multiple():
+    root = Node(3)
+    root.left = Node(7)
+    root.right = Node(2)
+    root.right.right = Node (11)
+    bt = BinaryTree(root)
+    assert bt.max_value() == 11
+
+def test_max_complex():
+    root = Node(5)
+    root.left = Node(7)
+    root.right = Node(8)
+    root.left.left = Node(4)
+    root.left.right = Node(13)
+    bt = BinaryTree(root)
+    assert bt.max_value() == 13
