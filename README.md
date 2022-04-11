@@ -101,3 +101,6 @@ def test_max_complex():
     assert bt.max_value() == 13 
 ``` 
 
+- [x] fix README add the new thing for challenge 16
+- [x] Create (max_value method).
+- [x] do Whiteboard 
