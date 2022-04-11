@@ -30,7 +30,7 @@ Binary Tree Create a Binary Tree class Define a method that finds the max value 
 ## Challenge Summary
 The code challenge was to create a method that finds the max value in a binary tree.
 ## Whiteboard Process
-![pic](/trees/maxTree.jpg)
+![pic](/maxTree.jpg)
 ## Approach & Efficiency
 - Define a max value and compare each value to each node in the tree. Traverse each node in the tree and compare to a max value.<br>
 Big O<br>
