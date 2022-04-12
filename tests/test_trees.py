@@ -1,5 +1,5 @@
 import pytest
-from trees.trees import Node, BinaryTree, BinarySearchTree
+from trees.trees import Node, BinaryTree, BinarySearchTree, Queue
 
 def test_binary_tree_empty():
     assert BinaryTree
@@ -110,3 +110,9 @@ def test_max_complex():
     root.left.right = Node(13)
     bt = BinaryTree(root)
     assert bt.max_value() == 13
+
+# tree-breadth-first Test
+def test_empty_queue():
+  empty_q = Queue()
+  print('I am in the test')
+  assert empty_q.isEmpty() == True
