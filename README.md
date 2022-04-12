@@ -107,12 +107,14 @@ def test_max_complex():
 
 # Code Challenge: Class 17
 ## Challenge Summary
+create a method called breadth_first that will return a list of the values in the order they were encountered
 
 ## Whiteboard Process
-![pic](/)
+![pic](/BreadthFirst.jpg)
 ## Approach & Efficiency
-
-
+Big O<br>
+time: O(n)<br>
+space: O(1)
 ## Solution
 ***Code***
 ```
@@ -155,5 +157,4 @@ def test_empty_queue():
 - [x] fix README add the new thing for challenge 17
 - [x] Create (breadth_first method).
 - [x] do Whiteboard 
-- [x]  
 
