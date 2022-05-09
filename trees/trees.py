@@ -165,6 +165,33 @@ def breadth_first(tree):
       print(queue.isEmpty())
   return tree_values
 
+class KaryTree:
+    def __init__(self, root=None):
+        self.root = root
+
+
+def fizz_buzz_tree(tree):
+    if tree.root is None:
+        return KaryTree()
+    else:
+        result = KaryTree(tree.root)
+        q = Queue()
+        q.enqueue(tree.root)
+        while not q.is_empty():
+            front = q.dequeue()
+            for child in front.children:
+                q.enqueue(child)
+            print(type(front.value))
+            if front.value % 15 == 0:
+                front.value = "FizzBuzz"
+            elif front.value % 5 == 0:
+                front.value = "Buzz"
+            elif front.value % 3 == 0:
+                front.value = "Fizz"
+            else:
+                front.value = str(front.value)
+        return result  
+
 
 if __name__ == '__main__':
     pass

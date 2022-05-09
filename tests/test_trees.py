@@ -1,5 +1,7 @@
 import pytest
-from trees.trees import Node, BinaryTree, BinarySearchTree, Queue
+from trees.trees import Node, BinaryTree, BinarySearchTree, Queue, fizz_buzz_tree, KaryTree
+
+
 
 def test_binary_tree_empty():
     assert BinaryTree
@@ -116,3 +118,53 @@ def test_empty_queue():
   empty_q = Queue()
   print('I am in the test')
   assert empty_q.isEmpty() == True
+
+
+#test Code Challenge: Class 18
+def test_kary_tree():
+    assert KaryTree()
+
+def test_fizz_buzz():
+    assert fizz_buzz_tree
+
+def test_kary_tree_fizz_buzz():
+    kt = KaryTree()
+    kt.add(1)
+    assert kt.root.value == 1
+
+def test_kary_tree_fizz_buzz_fizz():
+    kt = KaryTree()
+    kt.add(3)
+    assert fizz_buzz_tree(kt).root.value == 'fizz'
+
+
+def test_tree_fizz_buzz_add_divisible_3():
+    kt = KaryTree()
+    kt.add(12)
+    assert fizz_buzz_tree(kt).root.value == 'fizz'
+
+def test_k_fizz_buzz_buzz_divisible_5():
+    kt = KaryTree()
+    kt.add(10)
+    assert fizz_buzz_tree(kt).root.value == 'buzz'
+
+
+def test_k_fizz_buzz_fizz_buzz():
+    kt = KaryTree()
+    kt.add(30)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_fizz_both():
+    kt = KaryTree()
+    kt.add(60)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_fizzbuzz():
+    kt = KaryTree()
+    kt.add(45)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_not_fizzbuzz():
+    kt = KaryTree()
+    kt.add(16)
+    assert fizz_buzz_tree(kt).root.value != 'fizzbuzz'        
