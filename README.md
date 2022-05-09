@@ -158,3 +158,95 @@ def test_empty_queue():
 - [x] Create (breadth_first method).
 - [x] do Whiteboard 
 
+# Challenge Summary
+Create a fizz buzz tree function that applies the Fizz Buzz game to a tree of integers and converts the values to strings.
+## Whiteboard Process
+![pic](/FizzBuzz.jpg)
+
+## Approach & Efficiency
+build a function that takes a tree as an input (fizz buzz tree) Raise an error if the tree is empty or any of its alues is not integer. Create a new tree, traverse its values as (pre-order), and apply the FizzBuzz game's rules to each node. Return the new tree by changing the value of each node in accordance.<br>
+Big O<br>
+time: O(n)<br>
+space: O(n)
+## Solution
+***Code***
+```
+class KaryTree:
+    def __init__(self, root=None):
+        self.root = root
+
+
+def fizz_buzz_tree(tree):
+    if tree.root is None:
+        return KaryTree()
+    else:
+        result = KaryTree(tree.root)
+        q = Queue()
+        q.enqueue(tree.root)
+        while not q.is_empty():
+            front = q.dequeue()
+            for child in front.children:
+                q.enqueue(child)
+            print(type(front.value))
+            if front.value % 15 == 0:
+                front.value = "FizzBuzz"
+            elif front.value % 5 == 0:
+                front.value = "Buzz"
+            elif front.value % 3 == 0:
+                front.value = "Fizz"
+            else:
+                front.value = str(front.value)
+        return result 
+```
+***Test***
+```
+def test_kary_tree():
+    assert KaryTree()
+
+def test_fizz_buzz():
+    assert fizz_buzz_tree
+
+def test_kary_tree_fizz_buzz():
+    kt = KaryTree()
+    kt.add(1)
+    assert kt.root.value == 1
+
+def test_kary_tree_fizz_buzz_fizz():
+    kt = KaryTree()
+    kt.add(3)
+    assert fizz_buzz_tree(kt).root.value == 'fizz'
+
+
+def test_tree_fizz_buzz_add_divisible_3():
+    kt = KaryTree()
+    kt.add(12)
+    assert fizz_buzz_tree(kt).root.value == 'fizz'
+
+def test_k_fizz_buzz_buzz_divisible_5():
+    kt = KaryTree()
+    kt.add(10)
+    assert fizz_buzz_tree(kt).root.value == 'buzz'
+
+
+def test_k_fizz_buzz_fizz_buzz():
+    kt = KaryTree()
+    kt.add(30)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_fizz_both():
+    kt = KaryTree()
+    kt.add(60)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_fizzbuzz():
+    kt = KaryTree()
+    kt.add(45)
+    assert fizz_buzz_tree(kt).root.value == 'fizzbuzz'
+
+def test_k_fizz_buzz_not_fizzbuzz():
+    kt = KaryTree()
+    kt.add(16)
+    assert fizz_buzz_tree(kt).root.value != 'fizzbuzz'        
+```
+- [x] fix README add the new thing for challenge 18
+- [x] Create (fizz_buzz_tree method).
