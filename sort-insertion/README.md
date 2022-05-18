@@ -3,7 +3,7 @@ Create an insertion sort function that takes an array of integers as input and r
 ## Whiteboard Process
 this is whiteboard:<br>
 
-![pic](/assets/insertion_sort.jpg)
+![pic](/sort-insertion/assets/insertion_sort.jpg)
 	
 ## Approach & Efficiency
 insertion sort implementation To traverse through the array, I used two loops. To compare them and determine if the first is greater than the second, the first loop started at index 1 and the second loop started at index 0 of the same array. If it is, the two values are swapped.<br>
@@ -48,3 +48,9 @@ def test_insertion3():
     assert actual == expected
 
 ```
+
+- [x] done README file 
+- [x] done BLOG  
+- [x] done Whiteboard
+- [x] done the test 
+- [x] done the code 
