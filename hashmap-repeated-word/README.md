@@ -1,7 +1,7 @@
 # Challenge Summary
 Create a function called repeated word that finds the first word in a string that appears more than once. Strings as arguments string as output
 ## Whiteboard Process
-![pic](/hashmap_repeated_word/assets/hashmap.jpg)
+![pic](/hashmap-repeated-word/assets/hashmap.jpg)
 ## Approach & Efficiency
 **Big O**<br>
 time:O(1)<br>
