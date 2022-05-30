@@ -10,4 +10,4 @@ time:O(n)<br>
 space:O(n)<br>
 
 ## Solution
-![pic](/quick-sort/assets/QuickSort.jpg)
+![pic](/hashmap_left_join/assets/hashtables.jpg)
