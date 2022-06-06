@@ -6,8 +6,8 @@ Combine two hashmaps to one data structure with the left one being the primary o
 
 ## Approach & Efficiency
 **Big O**<br>
-time:O(n)<br>
+time:O(n^2)<br>
 space:O(n)<br>
 
 ## Solution
-![pic](/hashmap-left-join/assets/hashtables.jpg)
+![pic](/hashmap-left-join/assets/left.jpg)
